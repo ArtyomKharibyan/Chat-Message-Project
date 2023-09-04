@@ -5,11 +5,9 @@ import dayjs from 'dayjs';
 import { Chat } from '../../redux/ChatTypes';
 import {
   fetchChatData,
-  getUnreadMessages,
-  getUserId,
-  getUserTitle,
   selectChatData,
-} from '../../redux/middleware/MiddleWare';
+  updateSelectedChat
+} from '../../redux/middleware/Middleware';
 
 const ChatComponent: React.FC = () => {
   const dispatch = useDispatch();
@@ -21,9 +19,7 @@ const ChatComponent: React.FC = () => {
   }, [dispatch]);
 
   const handleChatItemClick = (chat: Chat) => {
-    dispatch(getUserId(chat.id));
-    dispatch(getUserTitle(chat.title));
-    dispatch(getUnreadMessages(chat.count_unread));
+    dispatch(updateSelectedChat(chat));
     setSelectedChat(chat);
   };
 
