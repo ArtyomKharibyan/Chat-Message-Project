@@ -1,6 +1,6 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {Chat, ChatMessage} from './ChatTypes';
+import { Chat, ChatMessage } from './ChatTypes';
 
 interface ChatState {
   chatMessages: ChatMessage[];
@@ -15,8 +15,8 @@ const initialState: ChatState = {
   chatMessages: [],
   chatData: [],
   selectedChatId: null,
-  userId: "",
-  userTitle: "",
+  userId: '',
+  userTitle: '',
   countUnread: 0,
 };
 
@@ -41,7 +41,15 @@ export const chatSlice = createSlice({
     },
     setCountUnread: (state, action: PayloadAction<number | null>) => {
       state.countUnread = action.payload;
-    }
+    },
+    updateSelectedChat: (state, action: PayloadAction<Chat | null>) => {
+      const chat = action.payload;
+
+      state.selectedChatId = chat?.id ?? null;
+      state.userId = chat?.id ?? null;
+      state.userTitle = chat?.title ?? null;
+      state.countUnread = chat?.count_unread ?? null;
+    },
   },
 });
 

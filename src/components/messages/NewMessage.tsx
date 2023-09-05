@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import dayjs from "dayjs";
 
 import {ChatMessage} from "../../redux/ChatTypes";
-import {selectChatMessages} from "../../redux/middleware/MiddleWare";
+import {selectChatMessages} from "../../redux/middleware/Middleware";
 
 const NewMessage = () => {
   const chatMessages: ChatMessage[] = useSelector(selectChatMessages);

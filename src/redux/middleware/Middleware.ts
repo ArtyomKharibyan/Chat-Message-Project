@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 import {chatSlice} from "../ChatSlices";
+import { Chat } from '../ChatTypes';
 import { AppThunk, RootState } from '../Store';
 
-export const { setChatMessages, setChatData, setSelectedChatId, setUserId, setUserTitle, setCountUnread } = chatSlice.actions;
+export const { setChatMessages, setChatData } = chatSlice.actions;
 
 export const fetchChatMessages = (id: string): AppThunk => async (dispatch) => {
   try {
@@ -20,20 +21,11 @@ export const fetchChatMessages = (id: string): AppThunk => async (dispatch) => {
   }
 };
 
-export const getUserId = (userId: string | null) => ({
-  type: 'chat/setUserId',
-  payload: userId,
+export const updateSelectedChat = (chat: Chat | null) => ({
+  type: 'chat/updateSelectedChat',
+  payload: chat,
 });
 
-export const getUserTitle = (userTitle: string | null) => ({
-  type: 'chat/setUserTitle',
-  payload: userTitle,
-});
-
-export const getUnreadMessages = (countUnread: number | null) => ({
-  type: 'chat/setCountUnread',
-  payload: countUnread,
-})
 
 export const fetchChatData = (): AppThunk => async (dispatch) => {
   try {
@@ -44,7 +36,7 @@ export const fetchChatData = (): AppThunk => async (dispatch) => {
       },
     });
 
-    dispatch(setChatData(response.data.response.reverse()));
+    dispatch(setChatData(response.data.response));
   } catch (error) {
     throw new Error('Error fetching chat data:');
 
