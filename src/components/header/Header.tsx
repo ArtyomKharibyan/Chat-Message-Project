@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { userTitle as selectUserTitle } from "../../redux/middleware/Middleware"; // Rename the imported selector
+import { userTitle as selectUserTitle } from "../../redux/middleware/Middleware";
 import { ReactComponent as Chat } from "../images/Chat.svg";
 
 const Header = () => {

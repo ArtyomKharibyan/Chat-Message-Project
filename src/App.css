@@ -317,7 +317,6 @@ body, html {
     display: flex;
     justify-content: flex-start;
     position: relative;
-    z-index: 10;
 }
 
 .chat-body-1 {
@@ -727,6 +726,27 @@ body, html {
 .chat-item-messages {
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.Text {
+    display: none;
+    z-index: 1;
+}
+
+@media screen and (max-width: 699px) {
+   .container {
+       display: none;
+       flex: none;
+   }
+
+    .block {
+        display: none;
+        flex: none;
+    }
+
+    .Text {
+        display: block;
+    }
 }
 
 

@@ -36,7 +36,7 @@ export const fetchChatData = (): AppThunk => async (dispatch) => {
       },
     });
 
-    dispatch(setChatData(response.data.response.reverse()));
+    dispatch(setChatData(response.data.response));
   } catch (error) {
     throw new Error('Error fetching chat data:');
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, {useEffect, useRef} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import dayjs from 'dayjs';
 
 import {
@@ -41,8 +41,7 @@ const MessagesDisplay = () => {
         const messageDate = dayjs.unix(message.created_at);
         const previousMessageDate = index > 0 ? dayjs.unix(chatMessages[index - 1].created_at) : null;
 
-        const isNewDayMessage =
-          messageDate.hour() >= 0 &&
+        const isNewDayMessage = messageDate.hour() >= 0 &&
           (previousMessageDate === null || messageDate.date() !== previousMessageDate.date());
 
         let messageDateComponent = null;
@@ -52,7 +51,7 @@ const MessagesDisplay = () => {
 
           if (formattedDate !== lastRenderedDate) {
             lastRenderedDate = formattedDate;
-            messageDateComponent = <MessageDate date={formattedDate} />;
+            messageDateComponent = <MessageDate date={formattedDate}/>;
           }
         }
 
@@ -75,7 +74,7 @@ const MessagesDisplay = () => {
                     {message.message}
                     <sup className="message-time">
                       {messageDate.format('HH:mm')}
-                      <ReadedMessage />
+                      <ReadedMessage/>
                     </sup>
                   </div>
                 </div>
@@ -106,7 +105,7 @@ const MessagesDisplay = () => {
         );
       })}
       <div>
-        {countUnread !== 0 ? <NewMessage /> : null}
+        {countUnread !== 0 ? <NewMessage/> : null}
       </div>
     </div>
   );
